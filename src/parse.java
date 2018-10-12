@@ -53,12 +53,6 @@ class Globs
                 ": unknown symbol\n");
             System.exit(0);
 
-
-        case  2: System.out.println("error type 2 at line "+
-                SourceFileReader.linecount+
-                ": 'main' expected\n");
-            System.exit(0);
-
         case  3: System.out.println("error type 3 at line "+
                 SourceFileReader.linecount+
                 ": '(' expected\n");
@@ -70,14 +64,6 @@ class Globs
         case  5: System.out.println("error type 5 at line "+
                 SourceFileReader.linecount+
                 ": 'id' expected\n");
-            System.exit(0);
-        case  6: System.out.println("error type 6 at line "+
-                SourceFileReader.linecount+
-                ": 'val' expected\n");
-            System.exit(0);
-        case  7: System.out.println("error type 7 at line "+
-                SourceFileReader.linecount+
-                ": 'ref' expected\n");
             System.exit(0);
         case  8: System.out.println("error type 8 at line "+
                 SourceFileReader.linecount+
@@ -95,85 +81,77 @@ class Globs
                 SourceFileReader.linecount+
                 ": ';' expected\n");
             System.exit(0);
-        case  12: System.out.println("error type 12 at line "+
-                SourceFileReader.linecount+
-                ": 'read' expected\n");
-            System.exit(0);
-        case  13: System.out.println("error type 13 at line "+
-                SourceFileReader.linecount+
-                ": 'write' expected\n");
-            System.exit(0);
-        case  14: System.out.println("error type 14 at line "+
-                SourceFileReader.linecount+
-                ": 'call' expected\n");
-            System.exit(0);
-        case  15: System.out.println("error type 15 at line "+
-                SourceFileReader.linecount+
-                ": 'if' expected\n");
-            System.exit(0);
-        case  16: System.out.println("error type 16 at line "+
-                SourceFileReader.linecount+
-                ": 'while' expected\n");
-            System.exit(0);
         case  17: System.out.println("error type 17 at line "+
                 SourceFileReader.linecount+
                 ": 'int' expected\n");
-            System.exit(0);
-        case  18: System.out.println("error type 18 at line "+
-                SourceFileReader.linecount+
-                ": '==' expected\n");
-            System.exit(0);
-        case  19: System.out.println("error type 19 at line "+
-                SourceFileReader.linecount+
-                ": '!=' expected\n");
-            System.exit(0);
-        case  20: System.out.println("error type 20 at line "+
-                SourceFileReader.linecount+
-                ": '>' expected\n");
-            System.exit(0);
-        case  21: System.out.println("error type 21 at line "+
-                SourceFileReader.linecount+
-                ": '>=' expected\n");
-            System.exit(0);
-        case  22: System.out.println("error type 22 at line "+
-                SourceFileReader.linecount+
-                ": '<' expected\n");
-            System.exit(0);
-        case  23: System.out.println("error type 23 at line "+
-                SourceFileReader.linecount+
-                ": '<=' expected\n");
-            System.exit(0);
-        case  24: System.out.println("error type 24 at line "+
-                SourceFileReader.linecount+
-                ": '+' expected\n");
-            System.exit(0);
-        case  25: System.out.println("error type 25 at line "+
-                SourceFileReader.linecount+
-                ": '-' expected\n");
-            System.exit(0);
-        case  26: System.out.println("error type 26 at line "+
-                SourceFileReader.linecount+
-                ": 'number' expected\n");
-            System.exit(0);
-        case  27: System.out.println("error type 27 at line "+
-                SourceFileReader.linecount+
-                ": '*' expected\n");
-            System.exit(0);
-        case  28: System.out.println("error type 28 at line "+
-                SourceFileReader.linecount+
-                ": '/' expected\n");
             System.exit(0);
         case  29: System.out.println("error type 29 at line "+
                 SourceFileReader.linecount+
                 ": '=' expected\n");
             System.exit(0);
-        case  30: System.out.println("error type 29 at line "+
+        case  32: System.out.println("error type 32 at line "+
                 SourceFileReader.linecount+
-                ": 'else' expected\n");
+                ": 'main' or 'id' expected\n");
             System.exit(0);
-        case  31: System.out.println("error type 29 at line "+
+        case  33: System.out.println("error type 33 at line "+
                 SourceFileReader.linecount+
-                ": 'endif' expected\n");
+                ": ')' or 'val' or 'ref' expected\n");
+            System.exit(0);
+        case  34: System.out.println("error type 34 at line "+
+                SourceFileReader.linecount+
+                ":'val' or 'ref' expected\n");
+            System.exit(0);
+        case  35: System.out.println("error type 35 at line "+
+                SourceFileReader.linecount+
+                ":')' or ',' expected\n");
+            System.exit(0);
+        case  36: System.out.println("error type 36 at line "+
+                SourceFileReader.linecount+
+                ":'id' or '{' or '}' or ';' or 'read' or 'write' or 'call' or 'if' or 'while' expected\n");
+            System.exit(0);
+        case  37: System.out.println("error type 37 at line "+
+                SourceFileReader.linecount+
+                ":',' or ';' expected\n");
+            System.exit(0);
+        case  38: System.out.println("error type 38 at line "+
+                SourceFileReader.linecount+
+                ":'==' or '!=' or '>' or '>=' or '<' or '<=' expected\n");
+            System.exit(0);
+        case  39: System.out.println("error type 39 at line "+
+                SourceFileReader.linecount+
+                ":'(' or 'id' or '+' or '-' or 'number' expected\n");
+            System.exit(0);
+        case  40: System.out.println("error type 40 at line "+
+                SourceFileReader.linecount+
+                ":')' or ';' or '==' or '!=' or '>' or '>=' or '<' or '<=' or '+' or '-' expected\n");
+            System.exit(0);
+        case  41: System.out.println("error type 41 at line "+
+                SourceFileReader.linecount+
+                ":'+' or '-' expected\n");
+            System.exit(0);
+        case  42: System.out.println("error type 42 at line "+
+                SourceFileReader.linecount+
+                ":')' or ';' or '==' or '!=' or '>' or '>=' or '<' or '<=' or '+' or '-' or '*' or '/' expected\n");
+            System.exit(0);
+        case  43: System.out.println("error type 43 at line "+
+                SourceFileReader.linecount+
+                ":'*' or '/' expected\n");
+            System.exit(0);
+        case  44: System.out.println("error type 44 at line "+
+                SourceFileReader.linecount+
+                ":'(' or 'id' or 'number' expected\n");
+            System.exit(0);
+        case  45: System.out.println("error type 45 at line "+
+                SourceFileReader.linecount+
+                ":')' or 'id' or 'number' expected\n");
+            System.exit(0);
+        case  46: System.out.println("error type 46 at line "+
+                SourceFileReader.linecount+
+                ":'else' or 'endif' or 'number' expected\n");
+            System.exit(0);
+        case  47: System.out.println("error type 47 at line "+
+                SourceFileReader.linecount+
+                ":'id' or '{' or ';' or 'read' or 'write' or 'call' or 'if' or 'while' expected\n");
             System.exit(0);
 
 
@@ -452,9 +430,7 @@ class Parser {
         } else if (lexan.token == tokenType.mainToken) {
             MainFunction();
         } else {
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(2);
+            Globs.error(32);
         }
     }
 
@@ -483,11 +459,7 @@ class Parser {
         } else if (lexan.token == tokenType.rightParen) {
             lexan.getToken();
         } else {
-            Globs.error(4);
-            System.out.println(" or ");
-            Globs.error(6);
-            System.out.println(" or ");
-            Globs.error(7);
+            Globs.error(33);
         }
     }
 
@@ -497,9 +469,7 @@ class Parser {
             if (lexan.token == tokenType.valToken || lexan.token == tokenType.refToken) {
                 lexan.getToken();
             } else {
-                Globs.error(6);
-                System.out.println(" or ");
-                Globs.error(7);
+                Globs.error(34);
             }
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
@@ -511,9 +481,7 @@ class Parser {
             } else if (lexan.token == tokenType.rightParen) {
 
             } else {
-                Globs.error(4);
-                System.out.println(" or ");
-                Globs.error(8);
+                Globs.error(35);
             }
         }
     }
@@ -541,23 +509,7 @@ class Parser {
                     FunctionBodyStatementRecursive();
             }
         } else {
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(9);
-            System.out.println(" or ");
-            Globs.error(10);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(12);
-            System.out.println(" or ");
-            Globs.error(13);
-            System.out.println(" or ");
-            Globs.error(14);
-            System.out.println(" or ");
-            Globs.error(15);
-            System.out.println(" or ");
-            Globs.error(16);
+            Globs.error(36);
         }
         if (lexan.token == tokenType.rightBrace) {
             if(noLookAhead==false){
@@ -579,23 +531,7 @@ class Parser {
                 FunctionBodyDeclarationRecursive();
             }
         } else {
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(9);
-            System.out.println(" or ");
-            Globs.error(10);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(12);
-            System.out.println(" or ");
-            Globs.error(13);
-            System.out.println(" or ");
-            Globs.error(14);
-            System.out.println(" or ");
-            Globs.error(15);
-            System.out.println(" or ");
-            Globs.error(16);
+            Globs.error(36);
         }
     }
 
@@ -612,23 +548,7 @@ class Parser {
                 FunctionBodyStatementRecursive();
             }
         } else {
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(9);
-            System.out.println(" or ");
-            Globs.error(10);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(12);
-            System.out.println(" or ");
-            Globs.error(13);
-            System.out.println(" or ");
-            Globs.error(14);
-            System.out.println(" or ");
-            Globs.error(15);
-            System.out.println(" or ");
-            Globs.error(16);
+            Globs.error(36);
         }
     }
 
@@ -652,9 +572,7 @@ class Parser {
         if (lexan.token == tokenType.semicolon) {
             lexan.getToken();
         } else {
-            Globs.error(8);
-            System.out.println(" or ");
-            Globs.error(11);
+            Globs.error(37);
         }
     }
 
@@ -680,17 +598,7 @@ class Parser {
                 lexan.token == tokenType.greaterEqual || lexan.token == tokenType.less || lexan.token == tokenType.lessEqual) {
             lexan.getToken();
         } else {
-            Globs.error(18);
-            System.out.println(" or ");
-            Globs.error(19);
-            System.out.println(" or ");
-            Globs.error(20);
-            System.out.println(" or ");
-            Globs.error(21);
-            System.out.println(" or ");
-            Globs.error(22);
-            System.out.println(" or ");
-            Globs.error(23);
+            Globs.error(38);
         }
         Expression();
     }
@@ -701,15 +609,7 @@ class Parser {
         } else if (lexan.token == tokenType.id || lexan.token == tokenType.leftParen || lexan.token == tokenType.number) {
 
         } else {
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(3);
-            System.out.println(" or ");
-            Globs.error(24);
-            System.out.println(" or ");
-            Globs.error(25);
-            System.out.println(" or ");
-            Globs.error(26);
+            Globs.error(39);
         }
         Term();
         if (lexan.token == tokenType.plus || lexan.token == tokenType.minus) {
@@ -720,25 +620,7 @@ class Parser {
                 lexan.token == tokenType.less || lexan.token == tokenType.lessEqual) {
 
         } else {
-            Globs.error(4);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(18);
-            System.out.println(" or ");
-            Globs.error(19);
-            System.out.println(" or ");
-            Globs.error(20);
-            System.out.println(" or ");
-            Globs.error(21);
-            System.out.println(" or ");
-            Globs.error(22);
-            System.out.println(" or ");
-            Globs.error(23);
-            System.out.println(" or ");
-            Globs.error(24);
-            System.out.println(" or ");
-            Globs.error(25);
+            Globs.error(40);
         }
     }
 
@@ -747,9 +629,7 @@ class Parser {
             lexan.getToken();
             Term();
         } else {
-            Globs.error(24);
-            System.out.println(" or ");
-            Globs.error(25);
+            Globs.error(41);
         }
     }
 
@@ -764,30 +644,8 @@ class Parser {
                 lexan.token == tokenType.plus || lexan.token == tokenType.minus) {
 
         } else {
-            //4,11,18-25,27,28
-            Globs.error(4);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(18);
-            System.out.println(" or ");
-            Globs.error(19);
-            System.out.println(" or ");
-            Globs.error(20);
-            System.out.println(" or ");
-            Globs.error(21);
-            System.out.println(" or ");
-            Globs.error(22);
-            System.out.println(" or ");
-            Globs.error(23);
-            System.out.println(" or ");
-            Globs.error(24);
-            System.out.println(" or ");
-            Globs.error(25);
-            System.out.println(" or ");
-            Globs.error(27);
-            System.out.println(" or ");
-            Globs.error(28);
+
+            Globs.error(42);
         }
     }
 
@@ -795,9 +653,7 @@ class Parser {
         if (lexan.token == tokenType.times || lexan.token == tokenType.slash) {
             lexan.getToken();
         } else {
-            Globs.error(27);
-            System.out.println(" or ");
-            Globs.error(28);
+            Globs.error(43);
         }
         Factor();
         if (lexan.token == tokenType.times || lexan.token == tokenType.slash) {
@@ -817,11 +673,7 @@ class Parser {
                 Globs.error(4);
             }
         } else {
-            Globs.error(3);
-            System.out.println(" or ");
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(26);
+            Globs.error(44);
         }
     }
 
@@ -845,9 +697,7 @@ class Parser {
                 } else if (lexan.token == tokenType.rightParen) {
 
                 } else {
-                    Globs.error(4);
-                    System.out.println(" or ");
-                    Globs.error(8);
+                    Globs.error(35);
                 }
             }
             else{
@@ -856,9 +706,7 @@ class Parser {
             if (lexan.token == tokenType.rightParen) {
                 lexan.getToken();
             } else {
-                Globs.error(4);
-                System.out.println(" or ");
-                Globs.error(5);
+                Globs.error(45);
             }
             if (lexan.token == tokenType.semicolon) {
                 lexan.getToken();
@@ -919,23 +767,7 @@ class Parser {
                 lexan.getToken();
             }
             else{
-                Globs.error(5);
-                System.out.println(" or ");
-                Globs.error(9);
-                System.out.println(" or ");
-                Globs.error(10);
-                System.out.println(" or ");
-                Globs.error(11);
-                System.out.println(" or ");
-                Globs.error(12);
-                System.out.println(" or ");
-                Globs.error(13);
-                System.out.println(" or ");
-                Globs.error(14);
-                System.out.println(" or ");
-                Globs.error(15);
-                System.out.println(" or ");
-                Globs.error(16);
+                Globs.error(36);
             }
         }else if(lexan.token == tokenType.whileToken){
             lexan.getToken();
@@ -980,27 +812,11 @@ class Parser {
                 lexan.getToken();
             }
             else {
-                Globs.error(30);
-                System.out.println(" or ");
-                Globs.error(31);
+                Globs.error(46);
             }
         }
         else{
-            Globs.error(14);
-            System.out.println(" or ");
-            Globs.error(11);
-            System.out.println(" or ");
-            Globs.error(5);
-            System.out.println(" or ");
-            Globs.error(12);
-            System.out.println(" or ");
-            Globs.error(13);
-            System.out.println(" or ");
-            Globs.error(9);
-            System.out.println(" or ");
-            Globs.error(16);
-            System.out.println(" or ");
-            Globs.error(15);
+            Globs.error(47);
         }
 
     }
