@@ -1,12 +1,38 @@
-main ( ) xxx
- { int x, result;
-   read x;
-   if (x >= 123) result=x+1000; else result=0; endif
-   while (y != 456) { y=y*x/78 - 9; write y; }
+test()
+ {int x, y;
+  x=x/2;
  }
 
-main val ref int read write call if else endif while
-(  ) {  }  ,  ;  =  ==  !=  <  <=  >  >=  +  -  *  /
-done
 
+factorize(val n)
+  { int i, q, r;
+    i=2;
+    while (n > 1)
+       { q= n/i ; r= n- q*i;
+         if (r == 0){ write i;  n = n/i; } else i=i+1; endif
+       }
+  }
 
+gcd(val x, val y, ref result)
+  { int t;
+    if (x == y) result=x;
+    else if (x > y) { t=x-y; call gcd(t, y, result); }
+	 else {t=y-x; call gcd(x, t, result); }
+	 endif
+    endif  
+  }
+
+main ( )
+ { int x, y, g;
+
+   read x;
+   read y;
+   call gcd(x, y, g);
+
+   write g;
+
+   read x;
+
+   call factorize(x);
+
+ }
