@@ -211,6 +211,9 @@ class LexAnalyzer
         //***for debugging only***
         lexout=new PrintWriter("lexout.txt");
         // end ***for debugging only***
+
+
+
     }
 
     class reservedWord
@@ -399,10 +402,22 @@ class Parser {
 
     LexAnalyzer lexan;
 
+
     //Constructor
     Parser() throws FileNotFoundException {
         lexan = new LexAnalyzer();
         lexan.getToken();
+        PrintWriter lexout=new PrintWriter("lexout.txt");
+
+        while (! (lexan.token == tokenType.id
+                && lexan.lexeme.equals("done")))
+        { lexout.print(Globs.tokenNameStrings[lexan.token.ordinal()]);
+            if (lexan.token == tokenType.id) lexout.print("     "+lexan.lexeme);
+            if (lexan.token == tokenType.number) lexout.print("     "+lexan.value);
+            lexout.println();
+            lexout.flush();
+            lexan.getToken();
+        } //end while
     }
 
 //this variable will be set to true only when parsing the main function
