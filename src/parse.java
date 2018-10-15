@@ -401,39 +401,41 @@ class LexAnalyzer
 class Parser {
 
     LexAnalyzer lexan;
-
-
+    boolean noLookAhead = false;
+    PrintWriter lexout;
     //Constructor
     Parser() throws FileNotFoundException {
+
         lexan = new LexAnalyzer();
         lexan.getToken();
-        PrintWriter lexout=new PrintWriter("lexout.txt");
+        lexout=new PrintWriter("lexout.txt");
 
-        while (! (lexan.token == tokenType.id
-                && lexan.lexeme.equals("done")))
-        { lexout.print(Globs.tokenNameStrings[lexan.token.ordinal()]);
-            if (lexan.token == tokenType.id) lexout.print("     "+lexan.lexeme);
-            if (lexan.token == tokenType.number) lexout.print("     "+lexan.value);
-            lexout.println();
-            lexout.flush();
-            lexan.getToken();
-        } //end while
     }
 
 //this variable will be set to true only when parsing the main function
 //if it is true, the paser will not read a lookahead token after the main
 //function is parsed compleletely.
 
-    boolean noLookAhead = false;
 
 //***define parser functions***
+    void printToken(){
+        lexout.print(Globs.tokenNameStrings[lexan.token.ordinal()]);
+        if (lexan.token == tokenType.id) lexout.print("     "+lexan.lexeme);
+        if (lexan.token == tokenType.number) lexout.print("     "+lexan.value);
+        lexout.println();
+        lexout.flush();
+
+    }
 
     void MainFunction() {
         lexan.getToken();   //get past mainToken
+        printToken();
         if (lexan.token != tokenType.leftParen) Globs.error(3);
         lexan.getToken();
+        printToken();
         if (lexan.token != tokenType.rightParen) Globs.error(4);
         lexan.getToken();
+        printToken();
         noLookAhead = true;
         FunctionBody();
     }
@@ -465,14 +467,18 @@ class Parser {
         lexan.getToken();
         if (lexan.token == tokenType.valToken || lexan.token == tokenType.refToken) {
             lexan.getToken();
+            printToken();
             if (lexan.token != tokenType.id) {
                 Globs.error(5);
             }
             lexan.getToken();
+            printToken();
             FunctionHeadingRecursive();
             lexan.getToken();
+            printToken();
         } else if (lexan.token == tokenType.rightParen) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(33);
         }
@@ -481,13 +487,16 @@ class Parser {
     void FunctionHeadingRecursive() {
         if (lexan.token == tokenType.comma) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.valToken || lexan.token == tokenType.refToken) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(34);
             }
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(5);
             }
@@ -504,6 +513,7 @@ class Parser {
     void FunctionBody() {
         if (lexan.token == tokenType.leftBrace) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(9);
         }
@@ -529,6 +539,7 @@ class Parser {
         if (lexan.token == tokenType.rightBrace) {
             if(noLookAhead==false){
                 lexan.getToken();
+                printToken();
             }
             else if(noLookAhead){
 
@@ -570,11 +581,13 @@ class Parser {
     void Declaration() {
         if (lexan.token == tokenType.intToken) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(17);
         }
         if (lexan.token == tokenType.id) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(5);
         }
@@ -586,6 +599,7 @@ class Parser {
         }
         if (lexan.token == tokenType.semicolon) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(37);
         }
@@ -594,11 +608,13 @@ class Parser {
     void DeclarationRecursive() {
         if (lexan.token == tokenType.comma) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(8);
         }
         if (lexan.token == tokenType.id) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(5);
         }
@@ -612,6 +628,7 @@ class Parser {
         if (lexan.token == tokenType.equality || lexan.token == tokenType.notEqual || lexan.token == tokenType.greater ||
                 lexan.token == tokenType.greaterEqual || lexan.token == tokenType.less || lexan.token == tokenType.lessEqual) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(38);
         }
@@ -621,6 +638,7 @@ class Parser {
     void Expression() {
         if (lexan.token == tokenType.plus || lexan.token == tokenType.minus) {
             lexan.getToken();
+            printToken();
         } else if (lexan.token == tokenType.id || lexan.token == tokenType.leftParen || lexan.token == tokenType.number) {
 
         } else {
@@ -642,6 +660,7 @@ class Parser {
     void ExpressionRecursive() {
         if (lexan.token == tokenType.plus || lexan.token == tokenType.minus) {
             lexan.getToken();
+            printToken();
             Term();
         } else {
             Globs.error(41);
@@ -667,6 +686,7 @@ class Parser {
     void TermRecursive() {
         if (lexan.token == tokenType.times || lexan.token == tokenType.slash) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(43);
         }
@@ -679,11 +699,14 @@ class Parser {
     void Factor() {
         if (lexan.token == tokenType.number || lexan.token == tokenType.id) {
             lexan.getToken();
+            printToken();
         } else if (lexan.token == tokenType.leftParen) {
             lexan.getToken();
+            printToken();
             Expression();
             if (lexan.token == tokenType.rightParen) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(4);
             }
@@ -695,18 +718,22 @@ class Parser {
     void Statement() {
         if (lexan.token == tokenType.callToken) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(5);
             }
             if (lexan.token == tokenType.leftParen) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(3);
             }
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
+                printToken();
                 if (lexan.token == tokenType.comma) {
                     StatementRecursiveComma();
                 } else if (lexan.token == tokenType.rightParen) {
@@ -720,55 +747,68 @@ class Parser {
             }
             if (lexan.token == tokenType.rightParen) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(45);
             }
             if (lexan.token == tokenType.semicolon) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(11);
             }
         } else if (lexan.token == tokenType.semicolon) {
             lexan.getToken();
+            printToken();
         } else if (lexan.token == tokenType.id) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.assignment) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(29);
             }
             Expression();
             if (lexan.token == tokenType.semicolon) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(11);
             }
         } else if (lexan.token == tokenType.readToken) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(5);
             }
             if (lexan.token == tokenType.semicolon) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(11);
             }
         } else if (lexan.token == tokenType.writeToken) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.id) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(5);
             }
             if (lexan.token == tokenType.semicolon) {
                 lexan.getToken();
+                printToken();
             } else {
                 Globs.error(11);
             }
         } else if (lexan.token == tokenType.leftBrace) {
             lexan.getToken();
+            printToken();
             if (lexan.token == tokenType.leftBrace || lexan.token == tokenType.semicolon ||
                     lexan.token == tokenType.readToken || lexan.token == tokenType.writeToken ||
                     lexan.token == tokenType.callToken || lexan.token == tokenType.ifToken ||
@@ -780,14 +820,17 @@ class Parser {
             }
             if (lexan.token == tokenType.rightBrace){
                 lexan.getToken();
+                printToken();
             }
             else{
                 Globs.error(36);
             }
         }else if(lexan.token == tokenType.whileToken){
             lexan.getToken();
+            printToken();
             if(lexan.token == tokenType.leftParen){
                 lexan.getToken();
+                printToken();
             }
             else{
                 Globs.error(3);
@@ -795,6 +838,7 @@ class Parser {
             Condition();
             if(lexan.token == tokenType.rightParen){
                 lexan.getToken();
+                printToken();
             }
             else{
                 Globs.error(4);
@@ -802,8 +846,10 @@ class Parser {
             Statement();
         }else if (lexan.token == tokenType.ifToken){
             lexan.getToken();
+            printToken();
             if(lexan.token == tokenType.leftParen){
                 lexan.getToken();
+                printToken();
             }
             else{
                 Globs.error(3);
@@ -811,6 +857,7 @@ class Parser {
             Condition();
             if(lexan.token == tokenType.rightParen){
                 lexan.getToken();
+                printToken();
             }
             else{
                 Globs.error(4);
@@ -818,6 +865,7 @@ class Parser {
             Statement();
             if (lexan.token == tokenType.elseToken){
                 lexan.getToken();
+                printToken();
                 Statement();
             }
             else{
@@ -825,6 +873,7 @@ class Parser {
             }
             if(lexan.token == tokenType.endifToken){
                 lexan.getToken();
+                printToken();
             }
             else {
                 Globs.error(46);
@@ -839,11 +888,13 @@ class Parser {
     void StatementRecursiveComma() {
         if (lexan.token == tokenType.comma) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(8);
         }
         if (lexan.token == tokenType.id) {
             lexan.getToken();
+            printToken();
         } else {
             Globs.error(5);
         }
